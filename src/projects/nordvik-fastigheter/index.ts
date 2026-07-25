@@ -1,0 +1,1 @@
+export { NordvikFastigheter } from "./NordvikFastigheter";

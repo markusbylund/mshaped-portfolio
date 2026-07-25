@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/projects</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/about</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/services</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/contact</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/projects/solar-expanse</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/projects/playdate-planner</loc>
+  </url>
+  <url>
+    <loc>https://markus-portfolio-demo.netlify.app/projects/the-five-crystals</loc>
+  </url>
+</urlset>

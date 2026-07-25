@@ -1,0 +1,450 @@
+.solar-expanse-route {
+  background: #020202;
+}
+
+.expanse-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.05), transparent 34rem),
+    linear-gradient(180deg, #020202 0%, #070504 54%, #020202 100%);
+  color: #f8fafc;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.expanse-back-link {
+  position: fixed;
+  top: 96px;
+  left: clamp(18px, 3vw, 44px);
+  z-index: 30;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 8px 13px;
+  color: #f8fafc;
+  background: rgba(5, 5, 5, 0.48);
+  backdrop-filter: blur(18px);
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.expanse-back-link:hover {
+  border-color: rgba(249, 115, 22, 0.55);
+  color: #fed7aa;
+}
+
+.expanse-starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.05), transparent 28rem),
+    radial-gradient(circle at 80% 15%, rgba(148, 163, 184, 0.06), transparent 24rem);
+}
+
+.expanse-starfield span {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  opacity: 0.2;
+  animation: expanse-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes expanse-twinkle {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.45);
+  }
+}
+
+.expanse-radial-glow {
+  position: fixed;
+  left: 50%;
+  bottom: -18vh;
+  z-index: 1;
+  width: min(96vw, 980px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--planet-glow), transparent 62%);
+  filter: blur(18px);
+  opacity: 0.62;
+  pointer-events: none;
+  transition: background 600ms ease;
+}
+
+.expanse-nav {
+  position: fixed;
+  top: 50%;
+  left: clamp(18px, 3vw, 48px);
+  z-index: 20;
+  display: grid;
+  gap: 11px;
+  transform: translateY(-50%);
+}
+
+.expanse-nav button {
+  position: relative;
+  min-height: 34px;
+  display: grid;
+  grid-template-columns: 18px auto;
+  column-gap: 10px;
+  align-items: center;
+  border: 0;
+  padding: 0 0 0 2px;
+  color: rgba(226, 232, 240, 0.4);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.expanse-nav button::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--planet-color);
+  transform: translateY(-50%);
+  transition: width 240ms ease;
+}
+
+.expanse-nav button.is-active {
+  color: #ffffff;
+}
+
+.expanse-nav button.is-active::after {
+  width: 34px;
+}
+
+.expanse-nav-dot {
+  width: 11px;
+  height: 11px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--planet-color) 0 30%, transparent 34%);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--planet-color) 50%, transparent);
+}
+
+.expanse-nav-name {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.expanse-nav-distance {
+  grid-column: 2;
+  margin-top: -7px;
+  color: rgba(226, 232, 240, 0.28);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.expanse-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.expanse-info {
+  width: min(620px, calc(100vw - 48px));
+  margin-bottom: clamp(300px, 42vh, 430px);
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.expanse-label {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.expanse-info h1 {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: clamp(3rem, 7vw, 5.75rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.expanse-subtitle {
+  margin-bottom: 14px;
+  color: #fed7aa;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.expanse-description {
+  max-width: 560px;
+  margin: 0 auto;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.expanse-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0 0;
+}
+
+.expanse-facts div {
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  padding-top: 12px;
+}
+
+.expanse-facts dt {
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.expanse-facts dd {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.expanse-read-more {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.9);
+  padding-bottom: 5px;
+  color: #fed7aa;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.expanse-read-more:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.expanse-scroll {
+  position: relative;
+  z-index: 2;
+}
+
+.expanse-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 120vh;
+}
+
+.expanse-planet-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  height: 100vh;
+  height: 100svh;
+  perspective: 900px;
+  perspective-origin: 50% 76%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.expanse-planet {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  width: calc(min(34vw, 300px) * var(--planet-size));
+  max-width: 72vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--planet-texture);
+  box-shadow:
+    inset -42px -54px 86px rgba(0, 0, 0, 0.42),
+    inset 28px 24px 72px rgba(255, 255, 255, 0.24),
+    0 0 90px var(--planet-glow),
+    0 0 210px color-mix(in srgb, var(--planet-color) 32%, transparent);
+  transform-origin: 50% 50%;
+  transition:
+    opacity 80ms linear,
+    filter 80ms linear,
+    transform 80ms linear;
+  will-change: opacity, filter, transform;
+}
+
+.expanse-planet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 34% 22%, rgba(255, 255, 255, 0.36), transparent 22%),
+    radial-gradient(circle at 68% 78%, rgba(0, 0, 0, 0.4), transparent 38%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.expanse-planet::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent 0 58%, rgba(0, 0, 0, 0.26));
+}
+
+.expanse-planet-sun {
+  box-shadow:
+    inset -40px -58px 120px rgba(124, 45, 18, 0.42),
+    inset 34px 28px 90px rgba(255, 255, 255, 0.28),
+    0 0 120px rgba(249, 115, 22, 0.72),
+    0 0 260px rgba(251, 191, 36, 0.36);
+  filter: saturate(1.3) contrast(1.08) brightness(1.12);
+}
+
+.expanse-planet-sun::before {
+  opacity: 0.32;
+}
+
+.expanse-planet-sun::after {
+  background: linear-gradient(90deg, transparent 0 54%, rgba(0, 0, 0, 0.32));
+}
+
+.saturn-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 158%;
+  height: 34%;
+  transform: translate(-50%, -50%) rotate(-13deg);
+  border: 18px solid rgba(240, 214, 156, 0.62);
+  border-left-color: rgba(240, 214, 156, 0.18);
+  border-right-color: rgba(240, 214, 156, 0.34);
+  border-radius: 50%;
+  box-shadow: 0 0 42px rgba(250, 204, 21, 0.16);
+}
+
+@media (max-width: 840px) {
+  .expanse-back-link {
+    top: 90px;
+  }
+
+  .expanse-nav {
+    top: auto;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    transform: none;
+  }
+
+  .expanse-nav button {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 4px;
+    min-height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 999px;
+    padding: 6px;
+    background: rgba(5, 5, 5, 0.68);
+    backdrop-filter: blur(16px);
+    text-align: center;
+  }
+
+  .expanse-nav button::after,
+  .expanse-nav-distance {
+    display: none;
+  }
+
+  .expanse-nav-name {
+    font-size: 0.58rem;
+  }
+
+  .expanse-info {
+    width: calc(100vw - 64px);
+    margin-top: 56px;
+    margin-bottom: 270px;
+  }
+
+  .expanse-info h1 {
+    font-size: clamp(2.2rem, 12vw, 3.55rem);
+    letter-spacing: 0.11em;
+    text-indent: 0.11em;
+    white-space: normal;
+  }
+
+  .expanse-description {
+    font-size: 0.9rem;
+  }
+
+  .expanse-facts {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    max-width: 270px;
+    margin-inline: auto;
+  }
+
+  .expanse-facts div {
+    padding-top: 8px;
+  }
+
+  .expanse-planet {
+    top: 71%;
+    width: calc(min(32vw, 140px) * var(--planet-size));
+    max-width: 84vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expanse-starfield span {
+    animation: none;
+  }
+
+  .expanse-scroll {
+    scroll-snap-type: none;
+  }
+
+  .expanse-read-more,
+  .expanse-nav button::after {
+    transition: none;
+  }
+}

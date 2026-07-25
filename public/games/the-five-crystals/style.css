@@ -1,0 +1,365 @@
+:root {
+  color-scheme: dark;
+  --gold: #f7c66b;
+  --cyan: #8de7ff;
+  --violet: #a98cff;
+  --danger: #ff5f6d;
+  --ink: #080711;
+  --panel: rgba(15, 13, 30, 0.76);
+  --line: rgba(255, 255, 255, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, #32234d, #080711 58%);
+  color: #fff7e8;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.game-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(60, 180, 130, 0.22), transparent 28rem),
+    radial-gradient(circle at 82% 34%, rgba(247, 97, 79, 0.18), transparent 32rem),
+    linear-gradient(145deg, #090711, #111021 62%, #070710);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+
+.hud {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  left: 16px;
+  right: 16px;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.hud-panel,
+.world-card,
+.dialog {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.hud-panel {
+  min-height: 54px;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  border-radius: 18px;
+  padding: 10px 14px;
+}
+
+.hud-panel span,
+.world-card span,
+.eyebrow {
+  color: rgba(255, 247, 232, 0.62);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.hud-panel strong {
+  font-size: 0.92rem;
+}
+
+.hp-bar {
+  width: min(34vw, 190px);
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.hp-bar i {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #59e391, var(--gold), #ff6b77);
+  transition: width 160ms ease;
+}
+
+.world-card {
+  position: absolute;
+  top: 90px;
+  right: 16px;
+  z-index: 4;
+  display: grid;
+  gap: 4px;
+  border-radius: 20px;
+  padding: 13px 16px;
+  text-align: right;
+}
+
+.world-card strong {
+  color: var(--gold);
+}
+
+.dialog {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 5;
+  width: min(620px, calc(100% - 32px));
+  transform: translateX(-50%);
+  border-radius: 22px;
+  padding: 16px 18px;
+}
+
+.dialog p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(169, 140, 255, 0.28), transparent 28rem),
+    radial-gradient(circle at 15% 85%, rgba(247, 198, 107, 0.16), transparent 22rem),
+    rgba(7, 7, 16, 0.86);
+}
+
+.screen[hidden],
+.hud[hidden],
+.world-card[hidden],
+.dialog[hidden] {
+  display: none;
+}
+
+.screen-card {
+  position: relative;
+  z-index: 2;
+  width: min(780px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: clamp(28px, 5vw, 54px);
+  background:
+    linear-gradient(145deg, rgba(20, 17, 38, 0.9), rgba(8, 7, 17, 0.72)),
+    radial-gradient(circle at 50% 0%, rgba(247, 198, 107, 0.16), transparent 24rem);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.44);
+  text-align: center;
+}
+
+.screen-card.compact {
+  max-width: 560px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: #fff9df;
+  text-shadow:
+    0 0 22px rgba(247, 198, 107, 0.28),
+    0 0 60px rgba(169, 140, 255, 0.22);
+}
+
+h1 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  font-size: clamp(2.7rem, 7vw, 5.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.screen-card p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 22px auto 0;
+  color: rgba(255, 247, 232, 0.76);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 26px 0;
+}
+
+.controls span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 12px;
+  color: rgba(255, 247, 232, 0.84);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.screen button {
+  min-height: 54px;
+  border: 0;
+  border-radius: 18px;
+  padding: 0 24px;
+  color: #150f08;
+  background: linear-gradient(135deg, #ffe39b, var(--gold));
+  box-shadow: 0 18px 44px rgba(247, 198, 107, 0.24);
+  font-weight: 950;
+}
+
+.victory .screen-card {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(247, 198, 107, 0.26), transparent 22rem),
+    linear-gradient(145deg, rgba(22, 18, 42, 0.94), rgba(8, 7, 17, 0.78));
+}
+
+.celebration-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti-piece,
+.firework-spark,
+.flying-crystal {
+  position: absolute;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.confetti-piece {
+  top: -32px;
+  left: var(--x);
+  width: 8px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color);
+  box-shadow: 0 0 16px var(--color);
+  animation: confetti-fall var(--duration) cubic-bezier(0.16, 0.84, 0.28, 1) var(--delay) infinite;
+}
+
+.firework-spark {
+  left: var(--x);
+  top: var(--y);
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color);
+  box-shadow: 0 0 18px var(--color), 0 0 42px var(--color);
+  animation: firework-pop 1100ms ease-out var(--delay) infinite;
+}
+
+.flying-crystal {
+  left: var(--start-x);
+  top: var(--start-y);
+  width: 26px;
+  height: 38px;
+  background: linear-gradient(135deg, #fffbe7 0%, var(--color) 42%, #4c2f92 100%);
+  clip-path: polygon(50% 0, 92% 28%, 72% 100%, 28% 100%, 8% 28%);
+  filter: drop-shadow(0 0 14px var(--color)) drop-shadow(0 0 34px var(--color));
+  animation: crystal-flight 2200ms cubic-bezier(0.16, 0.84, 0.24, 1) var(--delay) infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), 110vh, 0) rotate(720deg);
+  }
+}
+
+@keyframes firework-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.05);
+  }
+}
+
+@keyframes crystal-flight {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4) rotate(-24deg);
+  }
+  16% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--to-x), var(--to-y), 0) scale(1.25) rotate(28deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hud {
+    left: 10px;
+    right: 10px;
+    gap: 7px;
+  }
+
+  .hud-panel {
+    min-height: 48px;
+    padding: 8px 10px;
+  }
+
+  .inventory {
+    display: none;
+  }
+
+  .world-card {
+    top: auto;
+    right: 10px;
+    bottom: 100px;
+  }
+}

@@ -1,0 +1,29 @@
+# Dependencies and builds
+node_modules/
+dist/
+.vite/
+.vite-cache/
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# Local tools and browser profiles
+.edge-video-profile/
+.git-backup-empty-*/
+
+# Temporary and generated files
+tmp/
+output/
+reports/
+*.log
+
+# Root-level screenshots used for local visual testing
+/*.png
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

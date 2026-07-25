@@ -1,0 +1,33 @@
+{
+  "name": "codex-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "check": "tsc -b",
+    "assets:optimize": "node scripts/optimize-case-assets.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@supabase/supabase-js": "^2.108.1",
+    "@types/three": "^0.184.1",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.35.2",
+    "typescript": "^5.8.0",
+    "vite": "^6.0.0"
+  }
+}

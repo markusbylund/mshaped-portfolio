@@ -1,0 +1,16 @@
+export const skills = [
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "HTML",
+  "CSS",
+  "Vite",
+  "React Router",
+  "Accessibility",
+  "Responsive UI",
+  "Git",
+  "API integration",
+  "PowerShell",
+  "Automation",
+  "Performance",
+];

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Five Crystals</title>
+    <meta
+      name="description"
+      content="En spelbar fantasyprototyp där spelaren samlar fem kristaller och möter slutbossen Kimabo."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <canvas id="gameCanvas" width="1280" height="720" aria-label="The Five Crystals spelvy"></canvas>
+
+      <div class="hud" id="hud" hidden>
+        <div class="hud-panel">
+          <span>HP</span>
+          <div class="hp-bar"><i id="hpFill"></i></div>
+          <strong id="hpText">100/100</strong>
+        </div>
+        <div class="hud-panel">
+          <span>Kristaller</span>
+          <strong id="crystalText">0/5</strong>
+        </div>
+        <div class="hud-panel inventory">
+          <span>Utrustning</span>
+          <strong id="gearText">Träsvärd</strong>
+        </div>
+      </div>
+
+      <div class="world-card" id="worldCard" hidden>
+        <span id="worldKicker">Värld</span>
+        <strong id="worldName">Whisperwood Forest</strong>
+      </div>
+
+      <div class="dialog" id="dialog" hidden>
+        <p id="dialogText"></p>
+      </div>
+
+      <section class="screen start-screen" id="startScreen">
+        <div class="screen-card">
+          <p class="eyebrow">Ett originaläventyr från Markus portfolio</p>
+          <h1>The Five Crystals</h1>
+          <p>
+            Fem världar har tappat sitt ljus. Samla Skogskristallen, Eldkristallen, Iskristallen,
+            Stormkristallen och Mörkerkristallen för att öppna vägen till Kimabo.
+          </p>
+          <div class="controls">
+            <span>Rör dig: WASD / piltangenter</span>
+            <span>Attack: Mellanslag</span>
+            <span>Interagera: E</span>
+          </div>
+          <button id="startButton" type="button">Starta äventyret</button>
+        </div>
+      </section>
+
+      <section class="screen result-screen" id="gameOverScreen" hidden>
+        <div class="screen-card compact">
+          <p class="eyebrow">Äventyret föll i mörker</p>
+          <h2>Game Over</h2>
+          <p>Kimabos skuggor blev för starka. Vila, samla mod och försök igen.</p>
+          <button data-restart type="button">Försök igen</button>
+        </div>
+      </section>
+
+      <section class="screen result-screen victory" id="victoryScreen" hidden>
+        <div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+        <div class="screen-card compact">
+          <p class="eyebrow">Alla kristaller lyser</p>
+          <h2>Världen är räddad</h2>
+          <p>Kimabo är besegrad. De fem kristallerna återför magin till världarna.</p>
+          <button data-restart type="button">Spela igen</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
